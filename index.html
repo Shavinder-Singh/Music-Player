@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./src/output.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<style>
+    .seek-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: black;
+        box-shadow: -400px 0 0 400px #d5eebb;
+    }
+
+    .disk.play {
+        animation: ani1;
+        animation-duration: 19s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes ani1 {
+        0% {
+            transform: rotate(360deg);
+        }
+
+    }
+
+    .play-btn span {}
+
+    .play-btn.pause span:nth-child(2) {
+        transform: translateY(-50%) scaleY(0);
+    }
+
+    .play-btn.pause span:nth-child(1) {
+        width: 35%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        border-radius: 0;
+        clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+    }
+</style>
+
+<body class="w-[100%] h-[100vh] flex justify-center bg-[#5f7a61]">
+    <audio src="" id="audio"></audio>
+    <div class="music_player w-[350px] h-[540px] m-auto  rounded-3xl  p-8 overflow-hidden  shadow-2xl">
+        <!-- song name artist name -->
+        <h1 class="music_name text-center uppercase text-[40px] font-bold text-[#d5eebb]">Song name</h1>
+        <p class="artist_name text-center uppercase text-[20px] text-[#d5eebb]">artist</p>
+        <!-- disk div -->
+        <div class="disk relative top-0 block my-[40px] mx-auto w-[180px] h-[180px] rounded-[50%]  bg-cover before:content-normal before:absolute before:top-[50%] before:left-[50%] before:w-[30px] before:h-[30px] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-[50%] before:bg-[#5f7a61]"
+            style="background-image: url('./images/cover\ 1.png');">
+        </div>
+        <div class="song-slider w-[100%] relative top-0">
+            <input type="range" value="0"
+                class="seek-bar w-[100%] overflow-hidden rounded-xl cursor-pointer bg-[#7fc8a9] appearance-none">
+            <span class="current-time text-[14px]">00:00</span>
+            <span class="song-duration text-[14px] absolute right-[0px]">00:00</span>
+        </div>
+        <div class="controls w-[60%] flex justify-between items-center m-auto mt-[20px]">
+            <!-- backwarbtn-btn -->
+            <button
+                class="btn backward-btn w-[40px] h-[40px] p-4 bg-[#d5eebb] rounded-[50%] flex justify-center items-center cursor-pointer"
+                style="width: 40px;height: 40px; padding: 11px;">
+                <img src="./images/pre.png" width="100%" height="100%">
+
+            </button>
+            <button
+                class="play-btn  transition-all duration-1000 relative top-0 w-[60px] h-[60px] rounded-[50%] bg-[#d5eebb]">
+                <span class="absolute top-[50%] left-[25%] -translate-y-1/2 bg-black w-[10px] h-[30px]"></span>
+                <span
+                    class="left-[55%]  absolute top-[50%]  origin-center -translate-y-1/2 bg-black w-[10px] h-[30px]"></span>
+            </button>
+            <!-- forward-btn -->
+            <button
+                class="btn forward-btn transition-all duration-1000 w-[40px] h-[40px] bg-[#d5eebb] rounded-[50%] flex justify-center items-center cursor-pointer"
+                style="width: 40px;height: 40px; padding: 11px;">
+                <img src="./images/nxt.png" width="100%" height="100%">
+            </button>
+
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
